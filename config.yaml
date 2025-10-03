@@ -1,0 +1,7 @@
+device_id: '96a38567'  # 设备号
+test_type: 'test_smoke\test_phone'  # 测试类型
+test_project: 'vi'  # 测试项目平台
+case_name: 'all'  # 是否指定测试文件，默认为all
+tester_name: 'meng.peo'  # 测试人
+send_message: 'no'  # 是否发送报告
+run_number: '1' # 压测次数

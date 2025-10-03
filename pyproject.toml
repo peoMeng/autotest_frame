@@ -1,0 +1,17 @@
+[project]
+name = "autotest-frame"
+version = "0.1.0"
+description = "A modular and extensible Python automation testing framework based on pytest"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "adbutil>=0.0.6",
+    "allure-pytest>=2.15.0",
+    "colorlog>=6.9.0",
+    "pytest>=8.4.2",
+    "pytest-rerunfailures>=16.0.1",
+    "pyyaml>=6.0.2",
+    "setuptools>=80.9.0",
+    "uiautomator2>=3.4.1",
+    "weditor==0.6.4",
+]

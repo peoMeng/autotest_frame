@@ -1,0 +1,9 @@
+# Python 缓存
+__pycache__/
+# 虚拟环境
+.venv/
+# 日志文件
+log/
+
+# 报告信息
+allure_results
