@@ -13,7 +13,7 @@ class TestAppCenterThemeStore:
     def setup_method(self):
         self.ui2_util = Uiautomatorutil()
         with Allure.step("---测试用例前置条件:返回主界面---"):
-            self.ui2_util = Uiautomatorutil().click_home()
+            self.ui2_util.click_home()
             sleep(1)
 
     def teardown_method(self):

@@ -6,7 +6,7 @@ import uiautomator2 as u2
 
 from common.common_api import Common
 from common.log import logger
-from common.task_info import device_id, path_run
+from common.task_info import device_id, base_dir
 
 
 class OPPOVar:
@@ -92,7 +92,7 @@ class Uiautomatorutil:
 
     def upload_test_screen(self):
         try:
-            screen_image = path_run + os.sep + 'test_screen.png'
+            screen_image = base_dir + os.sep + 'test_screen.png'
             if os.path.exists(screen_image):
                 os.remove(screen_image)
             self.d.screenshot(screen_image)
