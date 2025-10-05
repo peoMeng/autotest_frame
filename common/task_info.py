@@ -30,11 +30,9 @@ class Arg:
         with open(config_yaml, "r", encoding="utf-8") as f:
             self._data = yaml.safe_load(f)
 
-        cmd_params = {}
         for k, v in vars(args).items():
             if v is not None:
                 self._data[k] = v
-                cmd_params[k] = v
 
         self._data["path_run"] = os.path.join(base_dir, "testcase", self._data["test_type"])
         return self._data

@@ -1,12 +1,9 @@
-import os
 from contextlib import contextmanager
 
 import allure
-import uiautomator2 as u2
 from PIL import Image
 
 from common.log import logger
-from common import task_info
 
 
 class Common:

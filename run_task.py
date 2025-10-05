@@ -14,7 +14,6 @@ def main():
                 test_path = task_info.path_run
             else:
                 test_path = os.path.join(task_info.path_run, task_info.case_name)
-                # 设置环境变量
             pytest.main([test_path, "-m", task_info.test_project, test_path, *rerun_mark])
     except Exception as e:
         logger.exception(f"运行测试异常:{e}")

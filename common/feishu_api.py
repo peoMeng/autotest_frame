@@ -4,7 +4,7 @@ import json
 from common.log import logger
 
 # 飞书机器人 Webhook 地址
-WEBHOOK_URL = "https://open.feishu.cn/open-apis/bot/v2/hook/8981a01b-46fa-44f4-830d-3f9b65485a7d"
+WEBHOOK_URL = ""
 
 
 def send_text(text, webhook_url: str):
