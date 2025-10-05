@@ -11,7 +11,7 @@ def generate_allure_report():
     allure_bat = base_dir + os.sep + "tools" + os.sep + "allure-2.35.1" + os.sep + "bin" + os.sep + "allure.bat"
 
     # 生成报告
-    subprocess.run([allure_bat, "serve", results_dir, "-o", report_dir, "--clean"], check=True)
+    subprocess.run([allure_bat, "generate", results_dir, "-o", report_dir, "--clean"], check=True)
 
 
 if __name__ == "__main__":
