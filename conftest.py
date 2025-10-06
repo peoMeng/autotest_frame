@@ -1,8 +1,6 @@
 import json
 import os
 
-from common.log import logger
-
 
 def pytest_terminal_summary(terminalreporter, config):
     """
