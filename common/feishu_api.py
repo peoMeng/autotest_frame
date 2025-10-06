@@ -7,7 +7,7 @@ from common.log import logger
 WEBHOOK_URL = ""
 
 
-def send_text(text, webhook_url: str):
+def feishu_send_text(webhook_url: str, text):
     headers = {
         "Content-Type": "application/json"
     }
@@ -25,4 +25,4 @@ def send_text(text, webhook_url: str):
 
 
 if __name__ == '__main__':
-    send_text("message test", WEBHOOK_URL)
+    feishu_send_text( WEBHOOK_URL, "message test")
