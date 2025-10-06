@@ -37,6 +37,7 @@ def send_report():
             logger.info(f"发送测试概要")
             send_text(test_message)
 
+            logger.info(f"测试执行路径: {path_run}")
             if "Jenkins" in path_run:
                 report_url = os.environ.get("BUILD_URL", "") + "allure/"
                 logger.info(f"发送测试报告链接：{report_url}")
