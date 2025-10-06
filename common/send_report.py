@@ -23,7 +23,6 @@ def send_report():
             executed_total = test_summary.get("executed_total", 0)
             passed = test_summary.get("passed", 0)
             failed = test_summary.get("failed", 0) + test_summary.get("errors", 0)  # 失败=failed+errors
-            skipped = test_summary.get("skipped", 0)
             rate = test_summary.get("pass_rate_excl_skipped", 0.0)
 
             test_message = (
