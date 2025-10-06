@@ -1,6 +1,8 @@
 import json
 import os
 
+from common.log import logger
+
 
 def pytest_terminal_summary(terminalreporter, config):
     """
@@ -33,7 +35,7 @@ def pytest_terminal_summary(terminalreporter, config):
 
     summary = {
         # 执行结果
-        "executed_total": executed_total,  # ✅ 只统计真正执行的总数
+        "executed_total": executed_total,  # 只统计真正执行的总数
         "passed": passed,
         "failed": failed,
         "errors": errors,  # 可与 failed 一起作为失败统计
@@ -56,5 +58,3 @@ def pytest_terminal_summary(terminalreporter, config):
 
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
-
-    terminalreporter.write_line(f"[pytest] 测试概要写入文件：{out_file}")

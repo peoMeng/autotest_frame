@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 from common.feishu_api import feishu_send_text
 from common.log import logger
@@ -33,9 +34,9 @@ def send_report():
                 f"执行总数：{executed_total}\n"
                 f"通过率：{rate}%\n"
             )
-            logger.info(f"发送测试概要")
+            logger.info("发送测试结果汇总")
             send_text(test_message)
-
+            sleep(3)
             logger.info(f"测试执行路径: {path_run}")
             if "Jenkins" in path_run:
                 report_url = os.environ.get("BUILD_URL", "") + "allure/"
