@@ -2,11 +2,11 @@ import os
 from time import sleep
 
 import allure
-import uiautomator2 as u2
 
+from baseutil.ui2_base import UiautomatorBase
 from common.common_api import Common
 from common.log import logger
-from common.task_info import device_id, base_dir
+from common.task_info import base_dir
 
 
 class OPPOVar:
@@ -27,32 +27,25 @@ class OPPOVar:
     file_manager_text = '文件'
     WLAN_text = '可用网络'
     # 便捷栏
-    conv_bar_setting_id = 'com.android.systemui:id/settings_button'
-    conv_bar_WLAN_expand_id = 'com.android.systemui:id/expand_indicator'
+    conv_bar_setting_id = 'id=com.android.systemui:id/settings_button'
+    conv_bar_WLAN_expand_id = 'id=com.android.systemui:id/expand_indicator'
 
 
-class Uiautomatorutil:
-    def __init__(self):
-        logger.info(f"uiautomator2连接设备{device_id}")
-        self.d = u2.connect(device_id)
+class OPPOUtil(UiautomatorBase):
 
     def open_app(self, pkg_name):
         logger.info(f"打开{pkg_name}应用")
-        self.d.app_start(pkg_name)
+        self.pkg_open_app(pkg_name)
 
-    def close_app(self, pkg_name):
-        logger.info(f"关闭{pkg_name}应用")
-        self.d.app_stop(pkg_name)
-
-    def appcenter_start(self, app_name):
+    def appcenter_start(self, local_text):
         for _ in range(5):
-            if self.d(text=app_name).exists:
-                logger.info(f"应用中心打开{app_name}应用")
-                self.d(text=app_name).click()
+            if self.exists(local_text):
+                logger.info(f"应用中心打开{local_text}应用")
+                self.click(local_text)
                 return True
             self.d.swipe_ext("left")
             sleep(2)
-        logger.error(f"应用中心未找到{app_name}应用")
+        logger.error(f"应用中心未找到{local_text}应用")
         return False
 
     def check_text_load(self, app_name, load_text):
@@ -68,7 +61,7 @@ class Uiautomatorutil:
         for _ in range(4):
             self.d.swipe_ext("right")
             sleep(1)
-            if self.d(text=text).exists:
+            if self.exists(text):
                 logger.info(f"回到{text}界面成功")
                 return True
         logger.error(f"回到{text}界面失败")
@@ -80,7 +73,7 @@ class Uiautomatorutil:
         return self.check_id_load('便捷栏', OPPOVar.conv_bar_setting_id)
 
     def check_id_load(self, id_name, resource_id):
-        if self.d(resourceId=resource_id).wait(timeout=5):
+        if self.exists(resource_id):
             logger.info(f"{id_name}加载成功")
             return True
         else:

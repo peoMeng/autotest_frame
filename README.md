@@ -4,29 +4,35 @@
 
 基于`pytest`编写自动化测试框架，集成`allure`测试报告和飞书消息通知，支持按照测试类型（如冒烟测试）、测试项目（如op项目）、单个用例文件等执行，
 目前使用`uiautomator2`作为UI自动化工具集，默认读取`config.yaml`文件作为配置参数，也可在`run.py`入口文件重新指定配置参数，
-与`jenkins`工具无缝集成，实现参数更新触发自动化测试并生成报告。
+与`jenkins`无缝集成，实现参数更新触发自动化测试并生成报告。
 
 ## 2. 项目结构
 
 ```
 autotest_frame/
+├── baseutil/               # 基类驱动层
+│   ├── ui2_base.py         # uiautomator2底层驱动
 ├── common/                 # 公共模块
 │   ├── common_api.py       # 通用业务
 │   ├── feishu_api.py       # 飞书通知
 │   ├── log.py              # 日志配置
 │   └── read_parse.py       # 配置传入参数
+│   └── send_report.py      # 发送报告
 │   └── task_info.py        # 任务信息
-│   └── ui2_util.py         # uiautomator2方法集
+├── pages/                  # 页面对象层
+│   └── oppo_page.py        # oppo页面对象操作
 ├── log/                    # 日志文件目录
 ├── testcase/               # 测试用例
 │   └── test_smoke/         # 冒烟测试集
 │       └── test_phone/     # 手机端测试
 ├── tools/                  # 外部工具
 │   └── allure-2.35.1/      # allure命令行工具
+│   └── imgmonitor/         # 图像异常监测工具
 │   └── report_depend/      # 报告依赖脚本
 ├── .gitignore              # git忽略配置
 ├── .python-version         # python版本
 ├── config.yaml             # 全局配置文件
+├── conftest.py             # pytest钩子函数集
 ├── main.bat                # 本地执行入口文件
 ├── pyproject.toml          # 项目依赖项 (uv)
 ├── pytest.ini              # pytest配置文件

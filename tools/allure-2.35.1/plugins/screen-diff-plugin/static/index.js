@@ -193,7 +193,7 @@
         },
     });
     allure.api.addTestResultBlock(TestResultView, { position: 'before' });
-    allure.api.addAttachmentViewer('application/vnd.allure.image.diff', {
+    allure.api.addAttachmentViewer('application/vnd.allure.imgmonitor.diff', {
         View: AttachmentView,
         icon: 'fa fa-exchange',
     });
