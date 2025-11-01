@@ -31,7 +31,6 @@ class TestConvenientBarWLAN:
         """
     )
     @allure.feature("便捷栏WLAN界面")
-    @pytest.mark.op
     @pytest.mark.vi
     def test_appcenter_wifi(self):
         try:

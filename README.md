@@ -26,7 +26,6 @@ autotest_frame/
 │   └── test_smoke/         # 冒烟测试集
 │       └── test_phone/     # 手机端测试
 ├── tools/                  # 外部工具
-│   └── allure-2.35.1/      # allure命令行工具
 │   └── imgmonitor/         # 图像异常监测工具
 │   └── report_depend/      # 报告依赖脚本
 ├── .gitignore              # git忽略配置

@@ -8,6 +8,7 @@ class UiautomatorBase:
     """基础页面类：支持通过变量值前缀 "=" 自动适配定位类型
     (如 conv_bar_setting_id = 'id=com.android.systemui:id/settings_button')
     默认使用text定位类型
+    注意：pkg、xpath定位单独调用对应的方法函数
     """
 
     # 可在这里添加定位类型
@@ -37,13 +38,17 @@ class UiautomatorBase:
         locator = self.locator_resolver(element)
         self.d(**locator).click()
 
-    def send_keys(self, element: str, text: str):
+    def xpath_click(self, element: str):
         locator = self.locator_resolver(element)
-        self.d(**locator).set_text(text)
+        self.d.xpath(**locator).click()
 
-    def exists(self, element: str, timeout=5):
+    def exists(self, element: str):
         locator = self.locator_resolver(element)
-        return self.d(**locator).wait(timeout=timeout)
+        return self.d(**locator).exists
+
+    def wait_exists(self, element: str, timeout=5):
+        locator = self.locator_resolver(element)
+        return self.d(**locator).exists(timeout=timeout)
 
     def pkg_open_app(self, element: str):
         locator = self.locator_resolver(element)

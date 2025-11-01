@@ -56,14 +56,9 @@ test_type = os.path.normpath(config['test_type'])
 test_project = config['test_project']
 # 测试用例路径
 path_run = config['path_run']
-# 指定测试文件
-case_name = config['case_name']
 # 测试人
 tester_name = config['tester_name']
 # 发生消息
 send_message = config['send_message']
 # 压测次数
 run_number = int(config['run_number'])
-
-if __name__ == '__main__':
-    print(config)

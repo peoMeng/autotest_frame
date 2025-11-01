@@ -6,13 +6,13 @@ from common.log import logger
 from common.task_info import path_run, send_message, test_project, tester_name
 from tools.report_depend.generate_report import get_pytest_summary
 
-WEBHOOK_URL_OP = ""
+WEBHOOK_URL = ""
 
 
 def send_text(text):
     try:
         if test_project == 'op':
-            feishu_send_text(WEBHOOK_URL_OP, text)
+            feishu_send_text(WEBHOOK_URL, text)
     except Exception as e:
         logger.exception(f"发送消息异常:{e}")
 
