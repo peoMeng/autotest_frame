@@ -10,7 +10,7 @@
 
 ```
 autotest_frame/
-├── baseutil/               # 基类驱动层
+├── base/               # 基类驱动层
 │   ├── ui2_base.py         # uiautomator2底层驱动
 ├── common/                 # 公共模块
 │   ├── common_api.py       # 通用业务
@@ -19,7 +19,8 @@ autotest_frame/
 │   └── read_parse.py       # 配置传入参数
 │   └── send_report.py      # 发送报告
 │   └── task_info.py        # 任务信息
-├── pages/                  # 页面对象层
+├── data/                   # 数据层
+├── page/                   # 页面对象层
 │   └── oppo_page.py        # oppo页面对象操作
 ├── log/                    # 日志文件目录
 ├── testcase/               # 测试用例

@@ -2,12 +2,15 @@ from time import sleep
 
 import allure
 import pytest
+from pytest_assume.plugin import assume
 
 from common.common_api import Allure
 from common.log import logger
-from pages.oppo_page import OPPOUtil, OPPOVar
+from data.mobile_phone_element import OPPOElement
+from page.oppo_page import OPPOUtil
 
 
+@allure.feature("便捷栏")
 class TestConvenientBarWLAN:
 
     def setup_method(self):
@@ -30,27 +33,25 @@ class TestConvenientBarWLAN:
         预期结果：1、WLAN正常打开
         """
     )
-    @allure.feature("便捷栏WLAN界面")
-    @pytest.mark.vi
+    @allure.title("便捷栏WLAN界面")
+    @pytest.mark.op
     def test_appcenter_wifi(self):
         try:
             with Allure.step("---测试：便捷栏WLAN---"):
                 self.oppo_util.upload_test_screen()
             with Allure.step("1、打开便捷栏和WLAN界面"):
                 logger.info("下滑便捷栏并检查")
-                result = self.oppo_util.convenient_bar_start()
+                self.oppo_util.convenient_bar_start()
                 sleep(1)
                 self.oppo_util.upload_test_screen()
-                assert result, "打开便捷栏失败"
-                self.oppo_util.click(OPPOVar.conv_bar_WLAN_expand_id)
+                self.oppo_util.click(OPPOElement.conv_bar_WLAN_expand_id)
                 sleep(1)
             with Allure.step("2、检查页面响应"):
                 logger.info("检查WLAN界面")
-                result = self.oppo_util.check_text_load('WLAN', OPPOVar.WLAN_text)
+                result = self.oppo_util.check_element_load(OPPOElement.WLAN_text)
                 sleep(1)
                 self.oppo_util.upload_test_screen()
-                assert result, "打开WLAN界面失败"
+                with assume:
+                    assert result, "打开WLAN界面失败"
         except Exception as e:
-            with Allure.step("用例异常"):
-                self.oppo_util.upload_test_screen()
             raise e

@@ -25,4 +25,4 @@ def feishu_send_text(webhook_url: str, text):
 
 
 if __name__ == '__main__':
-    feishu_send_text( WEBHOOK_URL, "message test")
+    feishu_send_text(WEBHOOK_URL, "message test")

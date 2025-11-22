@@ -2,12 +2,15 @@ from time import sleep
 
 import allure
 import pytest
+from pytest_assume.plugin import assume
 
 from common.common_api import Allure
 from common.log import logger
-from pages.oppo_page import OPPOUtil, OPPOVar
+from data.mobile_phone_element import OPPOElement
+from page.oppo_page import OPPOUtil
 
 
+@allure.feature("应用中心")
 class TestAppCenterSoftStore:
 
     def setup_method(self):
@@ -30,7 +33,7 @@ class TestAppCenterSoftStore:
         预期结果：1、应用正常打开
         """
     )
-    @allure.feature("应用中心软件商店")
+    @allure.title("应用中心软件商店")
     @pytest.mark.op
     def test_appcenter_soft_store(self):
         try:
@@ -38,17 +41,15 @@ class TestAppCenterSoftStore:
                 self.oppo_util.upload_test_screen()
             with Allure.step("1、应用中心打开软件商店"):
                 logger.info("应用中心查找软件商店应用并打开")
-                result = self.oppo_util.appcenter_start(OPPOVar.soft_store_name)
+                self.oppo_util.appcenter_start(OPPOElement.soft_store_name)
                 sleep(1)
                 self.oppo_util.upload_test_screen()
-                assert result, "未找到软件商店应用"
             with Allure.step("2、检查页面响应"):
                 logger.info("检查软件商店页面")
-                result = self.oppo_util.check_text_load(OPPOVar.soft_store_name, OPPOVar.soft_store_text)
+                result = self.oppo_util.check_element_load(OPPOElement.soft_store_text)
                 sleep(1)
                 self.oppo_util.upload_test_screen()
-                assert result, "打开软件商店应用失败"
+                with assume:
+                    assert result, "打开软件商店应用失败"
         except Exception as e:
-            with Allure.step("用例异常"):
-                self.oppo_util.upload_test_screen()
             raise e

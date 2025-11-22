@@ -13,7 +13,6 @@ def main():
     except Exception as e:
         logger.exception(f"运行测试异常:{e}")
 
-    logger.info("开始发送测试报告")
     send_report()
 
 

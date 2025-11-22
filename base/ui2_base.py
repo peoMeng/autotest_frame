@@ -8,7 +8,7 @@ class UiautomatorBase:
     """基础页面类：支持通过变量值前缀 "=" 自动适配定位类型
     (如 conv_bar_setting_id = 'id=com.android.systemui:id/settings_button')
     默认使用text定位类型
-    注意：pkg、xpath定位单独调用对应的方法函数
+    注意：pkg、xpath定位变量值不做前缀"="自动匹配，单独调用对应的方法函数
     """
 
     # 可在这里添加定位类型
@@ -18,8 +18,6 @@ class UiautomatorBase:
         "id": "resourceId",
         "desc": "description",
         "class": "className",
-        "pkg": "package_name",
-        "xpath": "xpath",
     }
 
     def __init__(self):
@@ -38,9 +36,8 @@ class UiautomatorBase:
         locator = self.locator_resolver(element)
         self.d(**locator).click()
 
-    def xpath_click(self, element: str):
-        locator = self.locator_resolver(element)
-        self.d.xpath(**locator).click()
+    def xpath_click(self, xpath_element: str):
+        self.d.xpath(xpath_element).click()
 
     def exists(self, element: str):
         locator = self.locator_resolver(element)
@@ -50,11 +47,10 @@ class UiautomatorBase:
         locator = self.locator_resolver(element)
         return self.d(**locator).exists(timeout=timeout)
 
-    def pkg_open_app(self, element: str):
-        locator = self.locator_resolver(element)
-        self.d.app_start(**locator)
+    def pkg_open_app(self, pkg: str):
+        self.d.app_start(pkg)
 
 
 if __name__ == "__main__":
-    oppo_video_pkg = 'pkg=com.android.settings'
+    oppo_video_pkg = 'com.android.settings'
     UiautomatorBase().pkg_open_app(oppo_video_pkg)

@@ -2,5 +2,5 @@ device_id: '96a38567'  # 设备号
 test_type: 'test_smoke'  # 测试类型
 test_project: 'op'  # 测试项目
 tester_name: 'peomeng'  # 测试人
-send_message: 'yes'  # 是否发送报告
+send_message: 'no'  # 是否发送报告
 run_number: '1' # 压测次数
