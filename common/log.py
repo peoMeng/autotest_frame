@@ -55,8 +55,12 @@ LOGGING_CONFIG = {
         'logger': {
             'handlers': ['console', 'pro_env'],
             'level': 'DEBUG',
-            'propagate': True
+            'propagate': False  # 冒泡到上级（最终到达 root）→ 再打印一次
         }
+    },
+    "root": {  # <<< 在这里配置 root
+        "level": "INFO",
+        "handlers": ["console"]
     }
 }
 
