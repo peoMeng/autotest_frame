@@ -5,7 +5,6 @@ import os
 def pytest_terminal_summary(terminalreporter, config):
     """
     测试结束后生成汇总：只统计实际执行的用例（排除 deselected）。
-    写入 allure_results/pytest_summary.json，供通知使用。
     """
     stats = terminalreporter.stats
 

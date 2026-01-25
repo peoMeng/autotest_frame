@@ -1,5 +1,5 @@
-@echo --创建虚拟环境同步依赖--
+@echo Create virtual environment and sync dependencies
 call uv_env.bat
 
-@echo --接收run.py传递的所有命令行参数--
+@echo Receive all command-line arguments passed from run.py
 python run_task.py %*
