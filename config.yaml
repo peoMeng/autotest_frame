@@ -1,4 +1,4 @@
 device_id: '96a38567'    # 设备号
 test_type: 'test_smoke'  # 测试类型
-test_platform: 'VIVO'    # 测试平台
+test_platform: 'OPPO'    # 测试平台
 tester: 'peomeng'        # 测试责任人

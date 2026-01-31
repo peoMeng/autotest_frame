@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from page.android_page import AndroidUtil
+from data.android_element import ElementCollect
 from util.common import AdbUtil, Allure
 from util.log import logger
 
@@ -21,7 +21,7 @@ class TestAppCenter:
 
     @pytest.mark.parametrize(
         "app_name, app_expect",
-        AndroidUtil.get_appcenter_list(),
+        ElementCollect.appcenter_collect,
     )
     @pytest.mark.OPPO
     def test_appcenter_file_manager(self, android_util, app_name, app_expect):

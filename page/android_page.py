@@ -64,29 +64,3 @@ class AndroidUtil(UiautoBase, metaclass=PageMeta):
                                attachment_type=allure.attachment_type.PNG)
         except Exception as e:
             logger.error(f"上传测试截图异常:{e}")
-
-    @classmethod
-    def get_appcenter_list(cls):
-        """
-        返回 appcenter_list 中映射后的值
-        :return: List of tuples，元素已经映射为对应字符串
-        """
-        result = []
-        val = getattr(AndroidElement, 'appcenter_collect', None)
-        if not isinstance(val, list) or not val:
-            raise Exception(f"appcenter_collect must is list type: {val}")
-        for app_name, app_expect in AndroidElement.appcenter_collect:
-            name_value = getattr(AndroidElement, app_name)
-            expect_value = getattr(AndroidElement, app_expect)
-            # 如果是 dict 类型，按平台取值
-            if isinstance(name_value, dict):
-                name_value = name_value.get(argsetter.test_platform, name_value.get('default', name_value))
-            if isinstance(expect_value, dict):
-                expect_value = expect_value.get(argsetter.test_platform, expect_value.get('default', expect_value))
-            result.append((name_value, expect_value))
-        return result
-
-
-if __name__ == '__main__':
-    android_util = AndroidUtil()
-    print(android_util.get_appcenter_list())

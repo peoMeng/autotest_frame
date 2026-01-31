@@ -24,5 +24,10 @@ class AndroidElement:
     conv_bar_setting_id = 'id=com.android.systemui:id/settings_button'
     conv_bar_WLAN_expand_id = 'id=com.android.systemui:id/expand_indicator'
 
-    appcenter_collect = {'OPPO': [('video', 'recommend'), ('music', 'music_lib'), ('soft_store', 'game'),
-                                  ('theme_store', 'typeface'), ('setting', 'setting_search'), ('file_manager', 'file')]}
+
+@platform_mapper(argsetter.test_platform, default_key="default")
+class ElementCollect:
+    ae = AndroidElement
+    appcenter_collect = {"OPPO": [(ae.video, ae.recommend), (ae.music, ae.music_lib), (ae.soft_store, ae.game),
+                                  (ae.theme_store, ae.typeface), (ae.setting, ae.setting_search),
+                                  (ae.file_manager, ae.file)]}
