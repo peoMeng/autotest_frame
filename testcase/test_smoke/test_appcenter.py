@@ -24,10 +24,10 @@ class TestAppCenter:
         ElementCollect.appcenter_collect,
     )
     @pytest.mark.OPPO
-    def test_appcenter_file_manager(self, android_util, app_name, app_expect):
+    def test_appcenter(self, android_util, app_name, app_expect):
         allure.dynamic.title(f"应用中心-{app_name}")
         allure.dynamic.description(f"""
-            测试场景：应用中心打开{app_name}-检查页面UI-{app_expect}
+            测试场景：应用中心打开{app_name}
             前置条件：
                 1、安卓adb已连接
             测试步骤：
